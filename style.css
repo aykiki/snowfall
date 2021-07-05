@@ -6,7 +6,7 @@ body{
 
 canvas{
     display: block; 
-    background-color: royalblue;
-    width: 100%;
-    height: 100%;
+    background-color: #070840;
+    width: 100vw;
+    height: 100vh;
 }
