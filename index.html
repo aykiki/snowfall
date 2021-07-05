@@ -28,13 +28,7 @@
                 this.snowflakes = [];
                 this.onResize();
                 window.addEventListener('resize', () => this.onResize());
-                for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes.push({
-                        x: Math.random() * this.windowWidth,
-                        y: 0 + Math.random() * 10000, //y-coordinate
-                        r: Math.random() * 100, //radius
-                    });
-                }
+                this.initParams();
                 this.drawAnimation();
             }
 
@@ -50,7 +44,15 @@
                 this.scene.style.height = this.windowHeight + 'px';
                 //this.draw();
             }
-
+            initParams(){
+                                for (let i = 0; i < this.countSnow; i++) {
+                    this.snowflakes.push({
+                        x: Math.random() * this.windowWidth,
+                        y: 0 + Math.random() * 10000, //y-coordinate
+                        r: Math.random() * 80, //radius
+                    });
+                }
+            }
 
             drawAnimation() {
                 this.step += 0.01;
@@ -61,7 +63,7 @@
                 this.context.fillStyle = "#F8F8FF";
 
                 for (var i = 0; i < this.countSnow; i++) {
-                    this.context.globalAlpha = 1 - (this.snowflakes[i].r / 100);
+                    this.context.globalAlpha = 0.9 - (this.snowflakes[i].r / 100) ;
                     this.context.beginPath();
                     this.context.arc(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].r,
                         0, Math.PI * 2, true);
