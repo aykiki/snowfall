@@ -67,7 +67,7 @@
                         0, Math.PI * 2, true);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = this.snowflakes[i].y % this.windowHeight + this.step;
+                    this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].r) % this.windowHeight + this.step;
                 }
 
             }
