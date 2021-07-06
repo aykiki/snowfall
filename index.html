@@ -77,9 +77,8 @@
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + (this.step * 100 * (-
-                        1) **
-                        (Math.floor(this.step * 100 + 4 * this.snowflakes[i].rX) - 1));
+                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + (-1) **
+                                     (Math.floor(this.step * 100 + 4 * this.snowflakes[i].rX) - 1);
                     this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY + this.step) % this
                         .windowHeight;
                 }
