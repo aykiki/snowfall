@@ -29,7 +29,7 @@
                 this.onResize();
                 window.addEventListener('resize', () => this.onResize());
                 this.initParams();
-                this.renderAnimation();
+                this.drawSnowflakes();
             }
 
 
@@ -51,23 +51,21 @@
                     this.snowflakes.push({
                         x: Math.random() * this.windowWidth,
                         y: Math.random() * 10000, //y-coordinate
-                        rX: Math.random() * (this.windowWidth / 80 - this.windowWidth / 500) + this.windowWidth / 500, //radius
+                        rX: Math.random() * (this.windowWidth / 70 - this.windowWidth / 500) + this.windowWidth / 500, //radius
                         rY: Math.random() * (this.windowWidth / 90 - this.windowWidth / 500) + this.windowWidth / 500,
                         //rotation: Math.random() * 100,
-                        step: 0.1,
+                        speed: 0.001,
                     });
                 }
             }
 
-            renderAnimation() {
-                this.time += 0.01;
-                this.drawSnowflake();
-                window.requestAnimationFrame(this.renderAnimation.bind(this));
+    
 
-            }
-
-            drawSnowflake() {
+            drawSnowflakes() {
+                
+                window.requestAnimationFrame(this.drawSnowflakes.bind(this));
                 this.context.clearRect(0, 0, this.windowWidth, this.windowHeight);
+
                 this.context.fillStyle = "#FFF";
 
                 for (var i = 0; i < this.countSnow; i++) {
@@ -79,9 +77,11 @@
                     this.context.closePath();
                     this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + ((-1) **
                                      (Math.floor(this.time + this.snowflakes[i].rX)));
-                    this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY + this.snowflakes[i].step)
-                                             % this.windowHeight;
+                    this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY)
+                                             % this.windowHeight + this.snowflakes[i].speed;
                 }
+
+
             }
         }
         const scenes = document.querySelectorAll('.snow');
