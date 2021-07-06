@@ -71,7 +71,7 @@
 
                 for (var i = 0; i < this.countSnow; i++) {
                     this.context.globalAlpha = 1 - (((this.snowflakes[i].rY >= this.snowflakes[i].rX) ?
-                        this.snowflakes[i].rY : this.snowflakes[i].rX) / 10);
+                        this.snowflakes[i].rY : this.snowflakes[i].rX) / 100);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
