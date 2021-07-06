@@ -22,7 +22,7 @@
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
                 this.step = 0;
-                this.countSnow = 200;
+                this.countSnow = 400;
                 this.x = 0;
                 this.y = 0;
                 this.snowflakes = [];
@@ -51,7 +51,7 @@
                     this.snowflakes.push({
                         x: Math.random() * this.windowWidth,
                         y: Math.random() * 10000, //y-coordinate
-                        rX: Math.random() * (this.windowWidth / 40), //radius
+                        rX: Math.random() * (this.windowWidth / 50), //radius
                         rY: Math.random() * (this.windowWidth / 70),
                     });
                 }
@@ -66,17 +66,16 @@
                 this.context.fillStyle = "#F8F8FF";
 
                 for (var i = 0; i < this.countSnow; i++) {
-                    this.context.globalAlpha = 1.1 - (((this.snowflakes[i].rY >= this.snowflakes[i].rX)
+                    this.context.globalAlpha = 1 - (((this.snowflakes[i].rY >= this.snowflakes[i].rX)
                                                      ? this.snowflakes[i].rY : this.snowflakes[i].rX) / 100);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX, 
                                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) +
-                                             this.step * 100 * (-1) ** (Math.floor(this.step * 100 + 4 * this.snowflakes[i].rX) - 1);
-                    this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY) % 
-                                            this.windowHeight + this.step;
+                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + (10 - this.step * 100 * (-1) ** 
+                                            (Math.floor(this.step * 100 + 4 * this.snowflakes[i].rX) - 1));
+                    this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY + this.step) % this.windowHeight;
                 }
 
             }
