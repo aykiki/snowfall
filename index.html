@@ -32,7 +32,7 @@
 
 
             onResize() {
-                
+
                 this.windowWidth = window.innerWidth;
                 this.windowHeight = window.innerHeight;
 
@@ -52,12 +52,11 @@
                         y: Math.random() * this.windowHeight, //y-coordinate
                         rX: Math.random() * (this.windowWidth /100) + 1, //radius
                         rY: Math.random() * (this.windowHeight / 105) + 1,
-                        speed: 0.5,
+                        speed: 0.2,
                     });
                 }
             }
 
-    
 
             drawSnowflakes() {
                 this.time += 0.01;
@@ -70,7 +69,7 @@
                     this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].rX * this.snowflakes[i].rX * Math.PI);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
-                        this.snowflakes[i].rY, 0, Math.PI * 2, true);
+                                            this.snowflakes[i].rY, 0, Math.PI * 2, true); // w/o rotation
                     this.context.fill();
                     this.context.closePath();
                     this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + this.snowflakes[i].speed * ((-1) **
