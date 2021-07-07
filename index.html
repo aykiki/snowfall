@@ -50,9 +50,9 @@
                         x: Math.random() * this.windowWidth,
                         y: Math.random() * 100000, //y-coordinate
                         rX: Math.random() * (this.windowWidth / 95) + 1, //radius
-                        rY: Math.random() * (this.windowHeight / 100) + 1,
+                        rY: Math.random() * (this.windowHeight / 95) + 1,
                         //rotation: Math.random() * 100,
-                        speed: 0.1,
+                        speed: 0.5,
                     });
                 }
             }
@@ -67,7 +67,7 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.context.globalAlpha = 1 - (0.01 * Math.max(this.snowflakes[i].x, this.snowflakes[i].y));
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].rX);
                     console.log(this.context.globalAlpha);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
