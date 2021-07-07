@@ -52,7 +52,7 @@
                         rX: Math.random() * (this.windowWidth / 80) + 1, //radius
                         rY: Math.random() * (this.windowHeight / 100) + 1,
                         //rotation: Math.random() * 100,
-                        speed: 10,
+                        speed: 0.5,
                     });
                 }
             }
@@ -67,10 +67,7 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.context.globalAlpha = 1 - ((Math.max(this.snowflakes[i].rX, this.snowflakes[i].rY ) - 
-                                Math.max(this.snowflakes[i].rX, this.snowflakes[i].rY) % 100 - 1) / 100);
-
-                    console.log(this.snowflakes[i].rX);
+                    this.context.globalAlpha = 1 - (Math.max(this.snowflakes[i].rX, this.snowflakes[i].rY ) / 100);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
