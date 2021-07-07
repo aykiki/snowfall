@@ -52,7 +52,7 @@
                         rX: Math.random() * (this.windowWidth / 80) + 1, //radius
                         rY: Math.random() * (this.windowHeight / 100) + 1,
                         //rotation: Math.random() * 100,
-                        speed: 0.5,
+                        speed: 10,
                     });
                 }
             }
@@ -76,7 +76,7 @@
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + ((-1) **
+                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + this.snowflakes[i].speed * ((-1) **
                                      (Math.floor(this.time + this.snowflakes[i].rX)));
                     this.snowflakes[i].y += this.snowflakes[i].speed;
                     this.snowflakes[i].y %= this.windowHeight
