@@ -67,7 +67,8 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.context.globalAlpha = 0.3;
+                    this.context.globalAlpha = 1 - (0.01 * Math.max(this.snowflakes[i].x, this.snowflakes[i].y));
+                    console.log(this.context.globalAlpha);
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
