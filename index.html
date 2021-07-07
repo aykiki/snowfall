@@ -45,14 +45,15 @@
             }
 
             initParams() {
-                this.countSnow = this.windowHeight;
+                this.countSnow = ((this.windowHeight >= this.windowHeight) ? 
+                                    this.windowHeight : this.windowHeight) / 10;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), //y-coordinate
                         rX: Math.random(), //radius
                         rY: Math.random(),
-                        speed: 1,
+                        speed: 10,
                     });
                 }
             }
