@@ -25,13 +25,14 @@
                 this.countSnow = 0;
                 this.snowflakes = [];
                 this.onResize();
-                window.addEventListener('resize', () => this.onResize());
                 this.initParams();
+                window.addEventListener('resize', () => this.onResize());
                 this.drawSnowflakes();
             }
 
 
             onResize() {
+                
                 this.windowWidth = window.innerWidth;
                 this.windowHeight = window.innerHeight;
 
@@ -48,10 +49,9 @@
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random() * this.windowWidth,
-                        y: Math.random() * 100000, //y-coordinate
-                        rX: Math.random() * (this.windowWidth / 55) + 1, //radius
-                        rY: Math.random() * (this.windowHeight / 75) + 1,
-                        //rotation: Math.random() * 100,
+                        y: Math.random() * this.windowHeight, //y-coordinate
+                        rX: Math.random() * (this.windowWidth /100) + 1, //radius
+                        rY: Math.random() * (this.windowHeight / 105) + 1,
                         speed: 0.5,
                     });
                 }
@@ -78,9 +78,6 @@
                     this.snowflakes[i].y += this.snowflakes[i].speed;
                     this.snowflakes[i].y %= this.windowHeight
                 }
-
-                
-
             }
         }
         const scenes = document.querySelectorAll('.snow');
