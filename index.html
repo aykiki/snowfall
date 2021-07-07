@@ -21,8 +21,8 @@
             constructor(scene) {
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
-                this.time = 0.0001;
-                this.countSnow = 0;               
+                this.time = 0.01;
+                this.countSnow = 0;
                 this.snowflakes = [];
                 this.onResize();
                 window.addEventListener('resize', () => this.onResize());
@@ -49,10 +49,10 @@
                     this.snowflakes.push({
                         x: Math.random() * this.windowWidth,
                         y: Math.random() * 10000, //y-coordinate
-                        rX: Math.random() * (this.windowWidth / 100) + 1, //radius
+                        rX: Math.random() * (this.windowWidth / 30) + 1, //radius
                         rY: Math.random() * (this.windowWidth / 120) + 1,
                         //rotation: Math.random() * 100,
-                        speed: Math.random(),
+                        speed: 0.001,
                     });
                 }
             }
@@ -60,22 +60,28 @@
     
 
             drawSnowflakes() {
+                this.time += 0.01;
                 window.requestAnimationFrame(this.drawSnowflakes.bind(this));
                 this.context.clearRect(0, 0, this.windowWidth, this.windowHeight);
 
                 this.context.fillStyle = "#FFF";
 
                 for (var i = 0; i < this.countSnow; i++) {
+                    // let gardient = this.context.createRadialGradient(this.snowflakes[i].x, this.snowflakes[i].y,
+                    //                     this.snowflakes[i].rX / 100, this.snowflakes[i].x, this.snowflakes[i].y,
+                    //                     this.snowflakes[i].rY);
+                    // this.context.fillStyle = gardient;
                     this.context.globalAlpha = 1 - (Math.max(this.snowflakes[i].rX, this.snowflakes[i].rY ) / 100);
+                    this.context.imageSmoothingEnabled = false;
                     this.context.beginPath();
                     this.context.ellipse(this.snowflakes[i].x, this.snowflakes[i].y, this.snowflakes[i].rX,
                         this.snowflakes[i].rY, 0, Math.PI * 2, true);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + ((-1) **
+                    this.snowflakes[i].x = (this.snowflakes[i].x % this.windowWidth) + 3 * ((-1) **
                                      (Math.floor(this.time + this.snowflakes[i].rX)));
                     this.snowflakes[i].y = (this.snowflakes[i].y + this.snowflakes[i].rY)
-                                             % this.windowHeight + this.snowflakes[i].speed * this.time;
+                                             % this.windowHeight + this.snowflakes[i].speed;
                 }
 
                 
