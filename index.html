@@ -53,7 +53,7 @@
                         y: Math.random(), //y-coordinate
                         rX: Math.random(), //radius
                         rY: Math.random(),
-                        speed: 1,
+                        speed: Math.random(),
                     });
                 }
             }
@@ -78,7 +78,7 @@
                                              1, 0, Math.PI * 2, true); // w/o rotation
                     this.context.fill();
                     this.context.closePath();
-                     this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed) % 
+                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed) % 
                                                 this.windowWidth / this.windowWidth;
                     this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed) % 
                                             this.windowHeight / this.windowHeight;
