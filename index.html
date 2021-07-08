@@ -79,9 +79,9 @@
                                              1, 0, Math.PI * 2, true); // w/o rotation
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed * 0.01) % 
+                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed * 0.1) % 
                                                 this.windowWidth / this.windowWidth;
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed * 0.01) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed * 0.1) % 
                                             this.windowHeight / this.windowHeight;
                 }
             }
