@@ -75,7 +75,7 @@
                                                       Math.PI);
                     this.context.beginPath();
                     this.context.ellipse(Math.sin(Math.PI * this.snowflakes[i].x) * this.windowWidth * 1.2, -Math.cos(Math.PI * 
-                                            this.snowflakes[i].y) * this.windowHeight, this.snowflakes[i].rX * 
+                                            this.snowflakes[i].y) * this.windowHeight * 1.2, this.snowflakes[i].rX * 
                                             (this.windowWidth / 100) + 1, this.snowflakes[i].rY * (this.windowHeight / 100) +
                                              1, 0, Math.PI * 2, true); // w/o rotation
                     this.context.fill();
