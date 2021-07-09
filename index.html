@@ -24,7 +24,7 @@
                 this.time = 9.8;
                 this.countSnow = 0;
                 this.snowflakes = [];
-                this.g = 0.2;
+                this.g = 0.3;
                 this.image = new Image();
                 this.onResize();
                 this.initParams();
@@ -48,7 +48,7 @@
 
             initParams() {
                 this.countSnow = ((this.windowHeight <= this.windowHeight) ? 
-                                    this.windowHeight : this.windowHeight) / 30;
+                                    this.windowHeight : this.windowHeight) / 10;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
@@ -74,15 +74,15 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = (0 + this.snowflakes[i].rX * 61) + (0 + this.snowflakes[i].rY * 41)
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 81) + (this.snowflakes[i].rY * 61)
+                    // this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
                     this.context.beginPath();
-                    this.image.src = `Snowflake_${this.snowflakes[i].image}.png`;
+                    this.image.src = `Screenshot_${this.snowflakes[i].image}.png`;
                     console.log(this.snowflakes[i].volume)
-                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
-                                        Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
-                                        this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
-                                        Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x), 
+                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + (100 - this.snowflakes[i].volume) * 
+                                        Math.sin(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].y),  
+                                        this.windowHeight * this.snowflakes[i].y + (100 - this.snowflakes[i].volume) * 
+                                        Math.cos(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].x), 
                                         0 + this.snowflakes[i].rX * 61, 
                                         0 + this.snowflakes[i].rY * 41);
                     // this.context.ellipse(this.windowWidth * this.snowflakes[i].x + 100 * 
