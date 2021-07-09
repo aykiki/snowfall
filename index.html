@@ -21,7 +21,7 @@
             constructor(scene) {
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
-                this.time = 1.1;
+                this.time = 0.2;
                 this.countSnow = 0;
                 this.snowflakes = [];
                 this.g = 9.8;
@@ -48,7 +48,7 @@
 
             initParams() {
                 this.countSnow = ((this.windowHeight <= this.windowHeight) ? 
-                                    this.windowHeight : this.windowHeight) / 10;
+                                    this.windowHeight : this.windowHeight) / 5;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
