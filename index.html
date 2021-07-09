@@ -21,7 +21,7 @@
             constructor(scene) {
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
-                this.time = 0.2;
+                this.time = 0.01;
                 this.countSnow = 0;
                 this.snowflakes = [];
                 this.g = 9.8;
@@ -74,7 +74,7 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 31) + (this.snowflakes[i].rY * 11)
+                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 21) + (this.snowflakes[i].rY * 11)
                     // this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
                     this.context.beginPath();
                     this.image.src = `Screenshot_${this.snowflakes[i].image}.png`;
@@ -83,7 +83,7 @@
                                         Math.sin(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].y),  
                                         this.windowHeight * this.snowflakes[i].y + (100 - this.snowflakes[i].volume) * 
                                         Math.cos(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].x), 
-                                        0 + this.snowflakes[i].rX * 31, 
+                                        0 + this.snowflakes[i].rX * 21, 
                                         0 + this.snowflakes[i].rY * 11);
                     // this.context.ellipse(this.windowWidth * this.snowflakes[i].x + 100 * 
                     //                     Math.sin(this.snowflakes[i].c * 100 * this.snowflakes[i].y),  
