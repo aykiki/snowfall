@@ -75,14 +75,12 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-
-                    this.context.globalAlpha = 1 - (0.01 * (this.snowflakes[i].rX * (this.windowWidth /100) + 1) *
-                                                     (this.snowflakes[i].rY * (this.windowHeight /100) + 1) *
-                                                      Math.PI);
+                    this.snowflakes[i].volume = (0 + this.snowflakes[i].rX * 61) * (0 + this.snowflakes[i].rY * 41)
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
                     this.context.beginPath();
-                    this.image.src = `/Snowflake_${this.snowflakes[i].image}.png`;
+                    this.image.src = `Snowflake_${this.snowflakes[i].image}.png`;
                     this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + 100 * 
-                                        Math.sin(this.snowflakes[i].c * 100 * this.snowflakes[i].y),  
+                                        Math.sin(this.snowflakes[i].c * (0 + this.snowflakes[i].rX * 61) * (0 + this.snowflakes[i].rY * 41) * this.snowflakes[i].y),  
                                         this.windowHeight * this.snowflakes[i].y + 100 * 
                                         Math.cos(this.snowflakes[i].c * 100 * this.snowflakes[i].x), 
                                         0 + this.snowflakes[i].rX * 61, 
