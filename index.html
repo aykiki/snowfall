@@ -43,14 +43,12 @@
 
                 this.scene.style.width = this.windowWidth + 'px';
                 this.scene.style.height = this.windowHeight + 'px';
-                //this.draw();
-
-                //this.context.imageSmoothingEnabled = true;
+ 
             }
 
             initParams() {
-                this.countSnow = ((this.windowHeight >= this.windowHeight) ? 
-                                    this.windowHeight : this.windowHeight);
+                this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
+                                    this.windowWidth: this.windowHeight);
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
