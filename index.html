@@ -58,7 +58,7 @@
                         rX: Math.random(), //radius
                         rY: Math.random(),
                         speed: Math.random(),
-                        c: Math.random(), 
+                        c: Math.random(), //amplituda
                         angle: 0,
                         radius: Math.random(),
                         image: Math.floor(0 + Math.random() * 11) % 3,
@@ -76,21 +76,21 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 18) + (this.snowflakes[i].rY * 11)
-                    // this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 56) + (this.snowflakes[i].rY * 34)
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
                     this.context.beginPath();
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
-                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + (100 - this.snowflakes[i].volume) * 
-                                        Math.sin(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].y),  
-                                        this.windowHeight * this.snowflakes[i].y + (100 - this.snowflakes[i].volume) * 
-                                        Math.cos(this.snowflakes[i].c * (100 - this.snowflakes[i].volume) * this.snowflakes[i].x), 
-                                        this.snowflakes[i].rX * 18, 
-                                        this.snowflakes[i].rY * 11);
+                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
+                                        Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
+                                        this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
+                                        Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x), 
+                                        this.snowflakes[i].rX * 56, 
+                                        this.snowflakes[i].rY * 44);
                     this.context.fill();
                     this.context.closePath();
                     this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed) % 
                                                 (this.windowWidth + 100) / this.windowWidth;
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].volume * this.g * (this.snowflakes[i].speed / 2)) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].volume * this.g * this.snowflakes[i].speed) % 
                                             (this.windowHeight + 100) / this.windowHeight;
                 }
             }
