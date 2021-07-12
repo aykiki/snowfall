@@ -76,7 +76,7 @@
 
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes[i].volume = (this.snowflakes[i].rX * 12) + (this.snowflakes[i].rY * 12)
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
                     // this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
