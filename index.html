@@ -25,7 +25,7 @@
                 this.countSnow = 0;
                 this.snowflakes = [];
                 this.bigSnowflakes = [];
-                this.g = 0.1;
+                this.g = 0.4;
                 this.image = new Image();
                 this.onResize();
                 this.initParams();
@@ -70,7 +70,7 @@
                         y: Math.random(), 
                         rX: 0 + Math.floor(Math.random() * 2), 
                         rY: 0 + Math.floor(Math.random() * 2),
-                        speed: 0.05,
+                        speed: 0.07,
                         volume: 0,
                         c: 0.0005, //amplituda
                         image: Math.floor(0 + Math.random() * 11) % 3,
