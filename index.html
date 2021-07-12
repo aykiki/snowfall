@@ -49,7 +49,7 @@
 
             initParams() {
                 this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
-                                    this.windowWidth: this.windowHeight) / 2;
+                                    this.windowWidth: this.windowHeight) / 3;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
@@ -64,7 +64,7 @@
                     });
                 }
 
-                for (let i = 0; i < this.countSnow / 10; i++) {
+                for (let i = 0; i < this.countSnow / 5; i++) {
                     this.bigSnowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
@@ -87,7 +87,7 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 12) + (this.snowflakes[i].rY * 12)
+                    this.snowflakes[i].volume = (this.snowflakes[i].rX * 10) + (this.snowflakes[i].rY * 10)
                     //this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
@@ -104,7 +104,7 @@
                                             (this.windowHeight + 100) / this.windowHeight;
                 }
 
-                for (let j = 0; j < (this.countSnow / 10); j++) {
+                for (let j = 0; j < (this.countSnow / 5); j++) {
                     this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 100) + (this.bigSnowflakes[j].rY * 100)
                     this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
                     this.context.beginPath();
