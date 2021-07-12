@@ -64,7 +64,7 @@
                     });
                 }
 
-                for (let i = 0; i < this.countSnow / 3; i++) {
+                for (let i = 0; i < this.countSnow / 4; i++) {
                     this.bigSnowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
@@ -101,10 +101,10 @@
                     this.context.fill();
                     this.context.closePath();
                     this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + ((100 - this.snowflakes[i].volume) / 100) * this.g * this.snowflakes[i].speed) % 
-                                            (this.windowHeight + this.snowflakes[i].rY * 10) / this.windowHeight;
+                                            (this.windowHeight + this.snowflakes[i].rY * 10 * 1.3) / this.windowHeight;
                 }
 
-                for (let j = 0; j < (this.countSnow / 3); j++) {
+                for (let j = 0; j < (this.countSnow / 4); j++) {
                     this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 90) + (this.bigSnowflakes[j].rY * 90)
                     //this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
                     this.context.beginPath();
@@ -119,7 +119,7 @@
                     this.context.fill();
                     this.context.closePath();
                     this.bigSnowflakes[j].y = (this.bigSnowflakes[j].y * this.windowHeight + ((1000 - this.bigSnowflakes[j].volume) / 1000) * this.g * 100 * this.bigSnowflakes[j].speed) % 
-                                            (this.windowHeight + this.bigSnowflakes[j].rY * 90) / this.windowHeight;
+                                            (this.windowHeight + this.bigSnowflakes[j].rY * 90 * 1.3) / this.windowHeight;
                 }
             }
         }
