@@ -49,7 +49,7 @@
 
             initParams() {
                 this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
-                                    this.windowWidth: this.windowHeight);
+                                    this.windowWidth: this.windowHeight) / 2;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
