@@ -66,7 +66,7 @@
 
                 for (let i = 0; i < this.countSnow / 4; i++) {
                     this.bigSnowflakes.push({
-                        x: Math.random() * 100,
+                        x: Math.random(),
                         y: Math.random(), 
                         rX: 0 + Math.floor(Math.random() * 2), 
                         rY: 0 + Math.floor(Math.random() * 2),
@@ -113,7 +113,7 @@
                     this.context.drawImage(this.image, this.windowWidth * this.bigSnowflakes[j].x + this.bigSnowflakes[j].volume *
                                         Math.sin(this.bigSnowflakes[j].c * 100 *  this.bigSnowflakes[j].volume * this.bigSnowflakes[j].y),  
                                         this.windowHeight * this.bigSnowflakes[j].y + this.bigSnowflakes[j].volume *
-                                        Math.cos(this.bigSnowflakes[j].c * 100 * this.bigSnowflakes[j].volume * this.bigSnowflakes[j].x), 
+                                        Math.cos(this.bigSnowflakes[j].c * 100 * this.bigSnowflakes[j].volume * this.bigSnowflakes[j].x) - 100, 
                                         this.bigSnowflakes[j].rX * 90, 
                                         this.bigSnowflakes[j].rY * 90);
                     this.context.fill();
