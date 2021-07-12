@@ -92,7 +92,7 @@
                                         Math.sin(this.snowflakes[i].angle * Math.PI) * this.snowflakes[i].radius,  
                                         (this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
                                         Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x)) + 
-                                        Math.cos(this.snowflakes[i].angle) * this.snowflakes[i].radius, 
+                                        Math.cos(this.snowflakes[i].angle * Math.PI) * this.snowflakes[i].radius, 
                                         this.snowflakes[i].rX * 12, 
                                         this.snowflakes[i].rY * 12);
                     this.context.fill();
