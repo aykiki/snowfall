@@ -87,12 +87,10 @@
                     //                     Math.cos( this.snowflakes[i].volume * this.snowflakes[i].x))+ Math.cos(this.snowflakes[i].angle) * this.snowflakes[i].radius)), 
                     //                     this.snowflakes[i].rX * 12, 
                     //                     this.snowflakes[i].rY * 12);
-                    this.context.drawImage(this.image, (this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
-                                        Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y)) + 
-                                        Math.sin(this.snowflakes[i].angle * Math.PI) * this.snowflakes[i].radius,  
-                                        (this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
-                                        Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x)) + 
-                                        Math.cos(this.snowflakes[i].angle * Math.PI) * this.snowflakes[i].radius, 
+                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
+                                        Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
+                                        this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
+                                        Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x), 
                                         this.snowflakes[i].rX * 12, 
                                         this.snowflakes[i].rY * 12);
                     this.context.fill();
