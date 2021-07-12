@@ -64,7 +64,7 @@
                     });
                 }
 
-                for (let i = 0; i < this.countSnow / 5; i++) {
+                for (let i = 0; i < this.countSnow / 2; i++) {
                     this.bigSnowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
@@ -104,9 +104,9 @@
                                             (this.windowHeight + 100) / this.windowHeight;
                 }
 
-                for (let j = 0; j < (this.countSnow / 5); j++) {
+                for (let j = 0; j < (this.countSnow / 2); j++) {
                     this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 90) + (this.bigSnowflakes[j].rY * 90)
-                    this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
+                    //this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
                     this.context.beginPath();
                     this.image.src = `img/snowflake_${this.bigSnowflakes[j].image}.png`
 
