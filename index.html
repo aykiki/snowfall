@@ -64,7 +64,7 @@
                     });
                 }
 
-                for (let i = 0; i < this.countSnow / 20; i++) {
+                for (let i = 0; i < this.countSnow / 10; i++) {
                     this.bigSnowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
@@ -104,7 +104,7 @@
                                             (this.windowHeight + 100) / this.windowHeight;
                 }
 
-                for (let j = 0; j < (this.countSnow / 20); j++) {
+                for (let j = 0; j < (this.countSnow / 10); j++) {
                     this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 100) + (this.bigSnowflakes[j].rY * 100)
                     this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
                     this.context.beginPath();
