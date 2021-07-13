@@ -74,7 +74,7 @@
 
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.1;
                     this.context.beginPath();
                     console.log(this.windowHeight);
                     console.log(this.windowWidth);
