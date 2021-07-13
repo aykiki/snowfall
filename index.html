@@ -21,10 +21,8 @@
             constructor(scene) {
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
-                this.time = 0;
                 this.countSnow = 0;
                 this.snowflakes = [];
-                this.g = 0.1;
                 this.image = new Image();
                 this.onResize();
                 this.initParams();
@@ -53,7 +51,7 @@
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), //y-coordinate
-                        size: Math.floor(0 + Math.random() * 31), //radius
+                        size: Math.floor(0 + Math.random() * 41), //radius
                         speed: 1 + Math.random(),
                         volume: 0,
                         c: Math.random(), //amplituda
@@ -65,7 +63,6 @@
 
 
             drawSnowflakes() {
-                this.time += 0.1;
                 
                 window.requestAnimationFrame(this.drawSnowflakes.bind(this));
                 this.context.clearRect(0, 0, this.windowWidth, this.windowHeight);
@@ -74,7 +71,7 @@
 
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.1;
                     this.context.beginPath();
                     
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
