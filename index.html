@@ -22,6 +22,7 @@
                 this.scene = scene;
                 this.context = this.scene.getContext('2d');
                 this.countSnow = 0;
+                this.sizingKoef = 0;
                 this.snowflakes = [];
                 this.image = new Image();
                 this.onResize();
@@ -47,11 +48,12 @@
             initParams() {
                 this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
                                     this.windowWidth: this.windowHeight);
+                this.sizingKoef = this.countSnow / 100;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
-                        size: Math.floor(0 + Math.random() * 31), 
+                        size: Math.floor(0 + Math.random() * 41), 
                         speed: Math.floor(3 + Math.random() * 11),
                         volume: 0,
                         c: Math.random(), //amplituda
@@ -84,7 +86,7 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + ((63 - this.snowflakes[i].volume) / 63) * this.snowflakes[i].speed) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + ((83 - this.snowflakes[i].volume) / 83) * (1 / this.sizingKoef) * this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                     
                 }
