@@ -24,7 +24,7 @@
                 this.time = 0;
                 this.countSnow = 0;
                 this.snowflakes = [];
-                this.g = 0.4;
+                this.g = 0.1;
                 this.image = new Image();
                 this.onResize();
                 this.initParams();
@@ -54,7 +54,7 @@
                         x: Math.random(),
                         y: Math.random(), //y-coordinate
                         size: Math.floor( 0 + Math.random() * 11), //radius
-                        speed: 1 + Math.random() * 11,
+                        speed: 0 + Math.random() * 3,
                         volume: 0,
                         c: Math.random(), //amplituda
                         image: Math.floor(0 + Math.random() * 8),
@@ -75,7 +75,7 @@
                     this.snowflakes[i].volume = this.snowflakes[i].size ** 2;
                     //his.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
-
+                    console.log(this.snowflakes[i].image);
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
     
                     this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
