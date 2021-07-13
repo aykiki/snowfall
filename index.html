@@ -53,8 +53,8 @@
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
-                        size: Math.floor(0 + Math.random() * 41), 
-                        speed: Math.floor(3 + Math.random() * 11),
+                        size: Math.floor(0 + Math.random() * (this.windowHeight * this.windowWidth / 1000000)), 
+                        speed: Math.floor(3 + Math.random() * (this.windowHeight * this.windowWidth / 100000)),
                         volume: 0,
                         c: Math.random(), //amplituda
                         image: Math.floor(0 + Math.random() * 13),
