@@ -76,10 +76,9 @@
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
                     this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
-                    
-
+                
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
-                    console.log(this.snowflakes[i].volume)
+                    
                     this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
                                         Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
                                         this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
@@ -88,6 +87,8 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
+                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed) % 
+                                                (this.windowWidth + 100) / this.windowWidth;
                     this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + ((1000 - this.snowflakes[i].volume) / 1000) * this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                     
