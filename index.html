@@ -24,6 +24,7 @@
                 this.countSnow = 0;
                 this.snowflakes = [];
                 this.image = new Image();
+                this.sizing = 0;
                 this.onResize();
                 this.initParams();
                 window.addEventListener('resize', () => this.onResize());
@@ -47,6 +48,9 @@
             initParams() {
                 this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
                                     this.windowWidth: this.windowHeight);
+                this.sizing = Math.floor(((this.windowWidth >= this.windowHeight) ? 
+                                    this.windowWidth: this.windowHeight) / ((this.windowWidth >= this.windowHeight) ? 
+                                    this.windowHeight : this.windowWidth));
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
@@ -71,7 +75,7 @@
 
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.1;
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
 
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
@@ -84,7 +88,7 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight +  this.snowflakes[i].speed / (101 - this.snowflakes[i].volume)) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight +  this.sizing * this.snowflakes[i].speed / (101 - this.snowflakes[i].volume)) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                 }
             }
