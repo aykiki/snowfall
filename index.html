@@ -88,7 +88,7 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (1 / this.snowflakes[i].volume) * (1 / Math.floor(this.sizingKoef)) * this.snowflakes[i].speed) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (1 / this.snowflakes[i].volume) * (1 / this.sizingKoef) * this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size  * 2) / this.windowHeight;
                     
                 }
