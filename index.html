@@ -24,6 +24,7 @@
                 this.time = 0;
                 this.countSnow = 0;
                 this.snowflakes = [];
+                this.g = 0.1;
                 this.image = new Image();
                 this.onResize();
                 this.initParams();
@@ -86,7 +87,7 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (103 - this.snowflakes[i].volume) *  this.snowflakes[i].speed) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (102 - this.snowflakes[i].volume) * this.g * this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                 }
             }
