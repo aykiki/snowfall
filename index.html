@@ -56,8 +56,8 @@
                         size: Math.floor(0 + Math.random() * (this.sizingKoef * 2)), 
                         speed: Math.floor(2 + Math.random() * Math.floor(this.sizingKoef / 10)),
                         volume: 0,
-                        c: Math.random() * (this.sizingKoef / 100), //amplituda
-                        image: Math.floor(0 + Math.random() * 13),
+                        c: 0.5 + Math.random() * (this.sizingKoef / 100), //amplituda
+                        image: Math.floor(0 + Math.random() * 11),
 
                     });
                 }
@@ -79,7 +79,7 @@
                     
 
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
-                    
+                    console.log(this.snowflakes[i].image)
                     this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].volume * 
                                         Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
                                         this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].volume * 
