@@ -53,7 +53,7 @@
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
-                        size: Math.floor(0 + Math.random() * ((11 * this.sizingKoef) / 2) ), 
+                        size: Math.floor(0 + Math.random() * ((15 * this.sizingKoef) / 2) ), 
                         speed: Math.floor(6 + Math.random() * Math.floor(this.sizingKoef)),
                         volume: 0,
                         c: Math.random(), //amplituda
@@ -74,7 +74,7 @@
 
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
                     this.context.beginPath();
                     
 
