@@ -105,7 +105,7 @@
                 }
 
                 for (let j = 0; j < (this.countSnow / 4); j++) {
-                    this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 90) + (this.bigSnowflakes[j].rY * 90)
+                    this.bigSnowflakes[j].volume = (this.bigSnowflakes[j].rX * 60) + (this.bigSnowflakes[j].rY * 60)
                     //this.context.globalAlpha = 1 - (0.01 * this.bigSnowflakes[j].volume) - 0.2;
                     this.context.beginPath();
                     this.image.src = `img/snowflake_${this.bigSnowflakes[j].image}.png`
@@ -114,12 +114,12 @@
                                         Math.sin(this.bigSnowflakes[j].c * 100 *  this.bigSnowflakes[j].volume * this.bigSnowflakes[j].y),  
                                         this.windowHeight * this.bigSnowflakes[j].y + this.bigSnowflakes[j].volume *
                                         Math.cos(this.bigSnowflakes[j].c * 100 * this.bigSnowflakes[j].volume * this.bigSnowflakes[j].x) - 100, 
-                                        this.bigSnowflakes[j].rX * 90, 
-                                        this.bigSnowflakes[j].rY * 90);
+                                        this.bigSnowflakes[j].rX * 60, 
+                                        this.bigSnowflakes[j].rY * 60);
                     this.context.fill();
                     this.context.closePath();
                     this.bigSnowflakes[j].y = (this.bigSnowflakes[j].y * this.windowHeight + ((1000 - this.bigSnowflakes[j].volume) / 1000) * this.g * 100 * this.bigSnowflakes[j].speed) % 
-                                            (this.windowHeight + this.bigSnowflakes[j].rY * 90 * 1.5) / this.windowHeight;
+                                            (this.windowHeight + this.bigSnowflakes[j].rY * 60 * 1.5) / this.windowHeight;
                 }
             }
         }
