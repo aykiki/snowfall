@@ -54,7 +54,7 @@
                         x: Math.random(),
                         y: Math.random(), 
                         size: Math.floor(0 + Math.random() * this.sizingKoef), 
-                        speed: Math.floor(0.5 + Math.random() * (this.sizingKoef / 10)),
+                        speed: Math.floor(2 + Math.random() * (this.sizingKoef * 0.001)),
                         volume: 0,
                         c: Math.random() * (this.sizingKoef / 2), //amplituda
                         image: Math.floor(0 + Math.random() * 13),
@@ -88,7 +88,7 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (1 / this.snowflakes[i].volume) * this.snowflakes[i].speed) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (0.1 * this.snowflakes[i].volume) * this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size  * 2) / this.windowHeight;
                     
                 }
