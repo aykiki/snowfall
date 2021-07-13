@@ -73,8 +73,8 @@
                 console.log(this.sizingKoef);
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = this.snowflakes[i].size * 2;
-                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2;
+                    this.snowflakes[i].volume = this.snowflakes[i].size * 2; //
+                    this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume) - 0.2; //opacity-blur
                     this.context.beginPath();
                 
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
