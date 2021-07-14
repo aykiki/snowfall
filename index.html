@@ -52,10 +52,10 @@
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
-                        size: Math.floor(0 + Math.random() * 31), 
+                        size: Math.floor(0 + Math.random() * 41), 
                         speed:  Math.floor(3 + Math.random() * 11),
                         volume: 0,
-                        c: Math.floor(4 + Math.random() * 11), //amplituda
+                        c: Math.floor(5 + Math.random() * 21), //amplituda
                         image: Math.floor(0 + Math.random() * 11),
 
                     });
@@ -84,9 +84,9 @@
                                         this.snowflakes[i].size);
                     this.context.fill();
                     this.context.closePath();
-                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed / 100) % 
+                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed / 10) % 
                                                 this.windowWidth / this.windowWidth;
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight - 1 + this.snowflakes[i].speed) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed) % 
                                             (this.windowHeight * 1.1) / this.windowHeight;
                 }
             }
