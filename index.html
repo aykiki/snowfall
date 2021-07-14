@@ -55,9 +55,9 @@
                         x: Math.random(),
                         y: Math.random(),
                         size: Math.floor(0.5 + Math.random() * 41),
-                        speed: 1 + Math.random() * 7,
+                        speed: 1 + Math.random() * 5,
                         volume: 0,
-                        c: Math.floor(1 + Math.random() * 7), //amplituda
+                        c: Math.floor(1 + Math.random() * 5), //amplituda
                         image: Math.floor(0 + Math.random() * 11),
                         counter: 0, // for changing direction and speed
                         direction: 1,
@@ -106,7 +106,7 @@
                     this.snowflakes[i].counter++;
 
                     if (this.snowflakes[i].counter == this.snowflakes[i].size * 10) {
-                        this.snowflakes[i].speed = (this.snowflakes[i].speed + Math.random() * 7) % 15;
+                        this.snowflakes[i].speed = (this.snowflakes[i].speed + Math.random() * 5) % 11;
                         this.snowflakes[i].direction *= -1;
                         this.snowflakes[i].counter = 0;
                     }
