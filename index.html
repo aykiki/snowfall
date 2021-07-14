@@ -75,9 +75,9 @@
                     
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
                     
-                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].c * 
+                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + 
                                         Math.sin(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].y),  
-                                        this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].c * 
+                                        this.windowHeight * this.snowflakes[i].y + 
                                         Math.cos(this.snowflakes[i].c * this.snowflakes[i].volume * this.snowflakes[i].x), 
                                         this.snowflakes[i].size, 
                                         this.snowflakes[i].size);
