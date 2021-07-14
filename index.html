@@ -69,7 +69,7 @@
                 this.context.fillStyle = "#FFF";
 
                 for (let i = 0; i < this.countSnow; i++) {
-                    this.snowflakes[i].volume = this.snowflakes[i].size ** 2;
+                    this.snowflakes[i].volume = this.snowflakes[i].size * 2;
                     //this.context.globalAlpha = 1 - (0.01 * this.snowflakes[i].volume);
                     this.context.beginPath();
                     
@@ -85,7 +85,7 @@
                     this.context.closePath();
                     // this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed / 1000) % 
                     //                             (this.windowWidth + 100) / this.windowWidth;
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (this.snowflakes[i].speed / this.snowflakes[i].volume) * this.snowflakes[i].c) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                 }
             }
