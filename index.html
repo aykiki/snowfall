@@ -80,10 +80,10 @@
                     //console.log(this.snowflakes[i].speed);
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
                     
-                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + this.snowflakes[i].c *
-                                        Math.sin(this.snowflakes[i].c * this.snowflakes[i].y),  
-                                        this.windowHeight * this.snowflakes[i].y + this.snowflakes[i].c *
-                                        Math.cos(this.snowflakes[i].c * this.snowflakes[i].x), 
+                    this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + (this.snowflakes[i].c + this.snowflakes[i].volume / 100)  *
+                                        Math.sin((this.snowflakes[i].c + this.snowflakes[i].volume / 100) * this.snowflakes[i].y),  
+                                        this.windowHeight * this.snowflakes[i].y + (this.snowflakes[i].c + this.snowflakes[i].volume / 100) *
+                                        Math.cos((this.snowflakes[i].c + this.snowflakes[i].volume / 100) * this.snowflakes[i].x), 
                                         this.snowflakes[i].size, 
                                         this.snowflakes[i].size);
                     this.context.fill();
