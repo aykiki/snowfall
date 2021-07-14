@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/img/icon.png" type="image/png">
+    <link rel="icon" href="img/icon.png" type="image/png">
     <title>Снегопад!</title>
 </head>
 
@@ -47,7 +47,7 @@
 
             initParams() {
                 this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
-                                    this.windowWidth: this.windowHeight);
+                                    this.windowWidth: this.windowHeight) * 1.5;
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
