@@ -106,7 +106,7 @@
                     this.counter++;
 
                     if (this.counter == 100) {
-                        this.snowflakes[i].speed = (this.snowflakes[i].speed + (4 + Math.random() * 11)) % 31;
+                        this.snowflakes[i].speed = (this.snowflakes[i].speed + (4 + Math.random() * 11)) % (2 * this.snowflakes[i].speed);
                         this.direction *= -1;
                         this.counter = 0;
                     }
