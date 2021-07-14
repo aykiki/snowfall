@@ -75,9 +75,12 @@
                     this.snowflakes[i].volume = this.snowflakes[i].size * 2;
                     
                     this.context.beginPath();
-                    
-                    //console.log(this.snowflakes[i].volume);
-                    //console.log(this.snowflakes[i].speed);
+                    this.context.save();
+                    this.context.translate(this.windowWidth * this.snowflakes[i].x + (this.snowflakes[i].c + this.snowflakes[i].volume / 100)  *
+                                        Math.sin((this.snowflakes[i].c + this.snowflakes[i].volume / 100) * this.snowflakes[i].y), this.windowHeight * this.snowflakes[i].y + (this.snowflakes[i].c + this.snowflakes[i].volume / 100) *
+                                        Math.cos((this.snowflakes[i].c + this.snowflakes[i].volume / 100) * this.snowflakes[i].x));
+
+                    this.context.rotate(10 * Math.PI/180);
                     this.image.src = `img/snowflake_${this.snowflakes[i].image}.png`
                     
                     this.context.drawImage(this.image, this.windowWidth * this.snowflakes[i].x + (this.snowflakes[i].c + this.snowflakes[i].volume / 100)  *
@@ -86,6 +89,7 @@
                                         Math.cos((this.snowflakes[i].c + this.snowflakes[i].volume / 100) * this.snowflakes[i].x), 
                                         this.snowflakes[i].size, 
                                         this.snowflakes[i].size);
+                    this.context.restore();
                     this.context.fill();
                     this.context.closePath();
                     this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed / 3) % 
