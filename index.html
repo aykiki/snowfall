@@ -45,16 +45,16 @@
             }
 
             initParams() {
-                this.countSnow = ((this.windowWidth <= this.windowHeight) ? 
+                this.countSnow = ((this.windowWidth >= this.windowHeight) ? 
                                     this.windowWidth: this.windowHeight);
                 for (let i = 0; i < this.countSnow; i++) {
                     this.snowflakes.push({
                         x: Math.random(),
                         y: Math.random(), 
-                        size: Math.floor(0 + Math.random() * 51), 
+                        size: Math.floor(0 + Math.random() * 41), 
                         speed:  Math.floor(1 + Math.random() * 11),
                         volume: 0,
-                        c: Math.random(), //amplituda
+                        c: Math.floor(1 + Math.random() * 11), //amplituda
                         image: Math.floor(0 + Math.random() * 11),
 
                     });
@@ -85,7 +85,7 @@
                     this.context.closePath();
                     // this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].speed / 1000) % 
                     //                             (this.windowWidth + 100) / this.windowWidth;
-                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (this.snowflakes[i].speed / this.snowflakes[i].volume) * 10) % 
+                    this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + (this.snowflakes[i].speed / this.snowflakes[i].volume) * this.snowflakes[i].c) % 
                                             (this.windowHeight + this.snowflakes[i].size * 2) / this.windowHeight;
                 }
             }
