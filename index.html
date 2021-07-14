@@ -59,7 +59,8 @@
                         volume: 0,
                         c: Math.floor(10 + Math.random() * 21), //amplituda
                         image: Math.floor(0 + Math.random() * 11),
-
+                        counter: 0, // for changing direction and speed
+                        direction: 1,
                     });
                 }
             }
@@ -92,12 +93,20 @@
                     this.context.fill();
                     this.context.closePath();
 
-                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + (-1) ** Math.floor(2 * Math.random() * 11) *
+                    this.snowflakes[i].x = (this.snowflakes[i].x * this.windowWidth + this.snowflakes[i].direction *
                                              this.snowflakes[i].speed / 3) % this.windowWidth / this.windowWidth;
 
                     this.snowflakes[i].y = (this.snowflakes[i].y * this.windowHeight + this.snowflakes[i].speed - 
                                             (2 * this.snowflakes[i].volume / 100)) % (this.windowHeight + 
                                             this.snowflakes[i].size * 5) / this.windowHeight;
+
+                    this.snowflakes[i].counter++;
+
+                    if (this.snowflakes[i].counter == this.snowflakes[i].size * 10) {
+                        this.snowflakes[i].speed = this.snowflakes[i].speed + Math.random() * 3;
+                        this.snowflakes[i].direction = -1;
+                        this.snowflakes[i].counter = 0;
+                    }
                 }
             }
         }
