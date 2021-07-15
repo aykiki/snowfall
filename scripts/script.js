@@ -53,8 +53,11 @@ class Snowflake {
                 y: Math.random(),
 
                 size: Math.floor(1 + Math.random() * 101),
-                speed: Math.random(), //Math.floor(1 + Math.random() * 11),
-                c: Math.floor(2 + Math.random() * 5), //amplituda
+                c: Math.floor(1 + Math.random() * 11), //amplituda
+
+                speedY: 1 + Math.random(), //
+                speedX: Math.random(),
+
 
                 imgNumber: Math.floor(0 + Math.random() * 11), //for randomize images
 
@@ -62,6 +65,8 @@ class Snowflake {
                 direction: 1,
 
                 eps: 0, //for smoothly falling and and disappearing snowflakes 
+
+
 
             });
         }
@@ -78,19 +83,21 @@ class Snowflake {
         for (let i = 0; i < this.countSnow; i++) {
 
             this.image.src = `img/snowflake_${this.snowflakes[i].imgNumber}.png`;
-            this.snowflakes[i].eps = this.snowflakes[i].size * 2;
+            this.snowflakes[i].eps = this.snowflakes[i].size * 2; // similar to volume of snowflakes
 
             //draw images with sinusoidal motion in x and cosine motion in y
             this.cnvs.context.drawImage(this.image,
-                this.cnvs.windowWidth * this.snowflakes[i].x - this.snowflakes[i].eps + this.snowflakes[i].c *
+                this.cnvs.windowWidth * this.snowflakes[i].x - this.snowflakes[i].eps + 
+                (this.snowflakes[i].c + (this.snowflakes[i].size / 1000)) * //amplituda related with size
                 Math.sin(this.snowflakes[i].c * this.snowflakes[i].y),
-                this.cnvs.windowHeight * this.snowflakes[i].y - this.snowflakes[i].eps + this.snowflakes[i].c *
+                this.cnvs.windowHeight * this.snowflakes[i].y - this.snowflakes[i].eps + 
+                (this.snowflakes[i].c + (this.snowflakes[i].size / 1000)) *
                 Math.cos(this.snowflakes[i].c * this.snowflakes[i].x),
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speed);
-            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speed);
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX);
+            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY);
 
             //return snowflakes on the start of the screen
             this.snowflakes[i].x %= (this.cnvs.windowWidth + this.snowflakes[i].eps);
@@ -100,6 +107,8 @@ class Snowflake {
             //return to initial scale
             this.snowflakes[i].x /= this.cnvs.windowWidth;
             this.snowflakes[i].y /= this.cnvs.windowHeight;
+
+        
 
         }
     }
