@@ -53,22 +53,33 @@ class Snowflake {
                 y: Math.random(),
 
                 size: Math.floor(1 + Math.random() * 101),
-                c: Math.floor(1 + Math.random() * 11), //amplituda
 
-                speedY: 1 + Math.random(), //
                 speedX: Math.random(),
-
-
-                imgNumber: Math.floor(0 + Math.random() * 11), //for randomize images
+                speedY: Math.random(), 
+                
+                imgNumber: Math.floor(0 + Math.random() * 11), //randomize images
 
                 wind: false, // for changing direction and speed
                 direction: 1,
 
-                eps: 0, //for smoothly falling and and disappearing snowflakes 
-
-
-
+                //init below
+                c: 0, //amplituda
+                eps: 0, // eps
+                cameraDist: 0, 
             });
+
+
+
+            // init vars which related with others features for every snowflake
+            this.snowflakes[i].eps = this.snowflakes[i].size * 2; //for smoothly falling and and disappearing snowflakes 
+
+            this.snowflakes[i].cameraDist = (100 - (this.snowflakes[i].size - 1)) * 0.01; // from start of Z-axis to us [0, 100] -> [0, 1]
+
+            this.snowflakes[i].c = Math.floor(0 + this.snowflakes[i].cameraDist * 11);
+
+            this.snowflakes[i].speedX =(100 - (this.snowflakes[i].size - 1)) * 0.01 / 10;
+            this.snowflakes[i].speedY = 2 + (100 - (this.snowflakes[i].size - 1)) * 0.01;
+
         }
 
     }
@@ -83,15 +94,12 @@ class Snowflake {
         for (let i = 0; i < this.countSnow; i++) {
 
             this.image.src = `img/snowflake_${this.snowflakes[i].imgNumber}.png`;
-            this.snowflakes[i].eps = this.snowflakes[i].size * 2; // similar to volume of snowflakes
 
             //draw images with sinusoidal motion in x and cosine motion in y
             this.cnvs.context.drawImage(this.image,
-                this.cnvs.windowWidth * this.snowflakes[i].x - this.snowflakes[i].eps + 
-                (this.snowflakes[i].c + (this.snowflakes[i].size / 1000)) * //amplituda related with size
+                this.cnvs.windowWidth * this.snowflakes[i].x - this.snowflakes[i].eps + this.snowflakes[i].c * //amplituda related with size
                 Math.sin(this.snowflakes[i].c * this.snowflakes[i].y),
-                this.cnvs.windowHeight * this.snowflakes[i].y - this.snowflakes[i].eps + 
-                (this.snowflakes[i].c + (this.snowflakes[i].size / 1000)) *
+                this.cnvs.windowHeight * this.snowflakes[i].y - this.snowflakes[i].eps + this.snowflakes[i].c *
                 Math.cos(this.snowflakes[i].c * this.snowflakes[i].x),
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
