@@ -37,7 +37,7 @@ class Snowflake {
         this.snowflakes = [];
         this.image = new Image();
 
-        this.wind = 10; // changing direction and speed
+        this.wind = 5; // changing direction and speed
         this.time = 0;
         this.startWindTime = Math.floor(10 + Math.random() * 100);
         this.finishWindTime = this.startWindTime + Math.floor(10 + Math.random() * 100);
@@ -77,7 +77,7 @@ class Snowflake {
 
             // init vars which related with others features for every snowflake
             this.snowflakes[i].speedX = (100 - (this.snowflakes[i].size - 1)) * 0.01;
-            this.snowflakes[i].speedY = (100 - (this.snowflakes[i].size - 1)) * 0.01;
+            this.snowflakes[i].speedY = 1 + (100 - (this.snowflakes[i].size - 1)) * 0.01;
 
             this.snowflakes[i].eps = this.snowflakes[i].size * 2; //for smoothly falling and and disappearing snowflakes 
             this.snowflakes[i].cameraDist = (100 - (this.snowflakes[i].size - 1)) * 0.01; // from start of Z-axis to us [0, 100] -> [0, 1]
@@ -90,11 +90,10 @@ class Snowflake {
 
     drawSnowflakes() {
 
+        window.requestAnimationFrame(this.drawSnowflakes.bind(this));
         this.cnvs.context.clearRect(0, 0, this.cnvs.windowWidth, this.cnvs.windowHeight);
         this.time++;
 
-
-        console.log(this.time);
 
         for (let i = 0; i < this.countSnow; i++) {
 
@@ -125,17 +124,23 @@ class Snowflake {
 
     
 
-        if (this.time == this.startWindTime) {
-            this.wind = Math.floor(this.wind + Math.random * 11);
-        } 
+        // if (this.time == this.startWindTime) {
+        //     this.wind = Math.floor(this.wind + Math.random * 11);
+        //     console.log(this.time);
+        //     console.log(this.startWindTime);
+        // }
 
-        if (this.time == this.finishWindTime) {
-            this.startWindTime = Math.floor(1000 + Math.random() * 1000);
-            this.finishWindTime = this.startWindTime + Math.floor(10 + Math.random() * 100);
+        // if (this.time == this.finishWindTime) {
+        //     this.startWindTime = Math.floor(100 + Math.random() * 1000);
 
-            this.time = 0;
-            this.wind = 2; //to initial speed w/o wind
-        } 
+        //     this.finishWindTime = this.startWindTime + Math.floor(10 + Math.random() * 1000);
+
+        //     console.log(this.finishWindTime);
+        //     console.log(this.startWindTime);
+
+        //     //this.time = 0;
+        //     this.wind = 2; //to initial speed w/o wind
+        // } 
 
 
 
