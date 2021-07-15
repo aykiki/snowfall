@@ -37,6 +37,11 @@ class Snowflake {
         this.snowflakes = [];
         this.image = new Image();
 
+        this.wind = 2; // changing direction and speed
+        this.time = 0;
+        this.startWindTime = Math.floor(10 + Math.random() * 100);
+        this.finishWindTime = this.startWindTime + Math.floor(10 + Math.random() * 100);
+
         this.cnvs = cnvs;
         this.initVars();
     }
@@ -55,30 +60,30 @@ class Snowflake {
                 size: Math.floor(1 + Math.random() * 101),
 
                 speedX: Math.random(),
-                speedY: Math.random(), 
-                
+                speedY: Math.random(),
+
                 imgNumber: Math.floor(0 + Math.random() * 11), //randomize images
 
-                wind: false, // for changing direction and speed
-                direction: 1,
+                
+                direction: -1,
 
                 //init below
                 c: 0, //amplituda
                 eps: 0, // eps
-                cameraDist: 0, 
+                cameraDist: 0,
             });
 
 
 
             // init vars which related with others features for every snowflake
+            this.size -= this.size
+
+            this.snowflakes[i].speedX = (100 - (this.snowflakes[i].size - 1)) * 0.001;
+            this.snowflakes[i].speedY = (100 - (this.snowflakes[i].size - 1)) * 0.01;
+
             this.snowflakes[i].eps = this.snowflakes[i].size * 2; //for smoothly falling and and disappearing snowflakes 
-
             this.snowflakes[i].cameraDist = (100 - (this.snowflakes[i].size - 1)) * 0.01; // from start of Z-axis to us [0, 100] -> [0, 1]
-
             this.snowflakes[i].c = Math.floor(0 + this.snowflakes[i].cameraDist * 11);
-
-            this.snowflakes[i].speedX =(100 - (this.snowflakes[i].size - 1)) * 0.01 / 10;
-            this.snowflakes[i].speedY = 2 + (100 - (this.snowflakes[i].size - 1)) * 0.01;
 
         }
 
@@ -86,10 +91,11 @@ class Snowflake {
 
 
     drawSnowflakes() {
-        
+
         window.requestAnimationFrame(this.drawSnowflakes.bind(this));
         this.cnvs.context.clearRect(0, 0, this.cnvs.windowWidth, this.cnvs.windowHeight);
 
+        console.log(this.time);
 
         for (let i = 0; i < this.countSnow; i++) {
 
@@ -104,7 +110,7 @@ class Snowflake {
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX);
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX * this.wind);
             this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY);
 
             //return snowflakes on the start of the screen
@@ -116,9 +122,23 @@ class Snowflake {
             this.snowflakes[i].x /= this.cnvs.windowWidth;
             this.snowflakes[i].y /= this.cnvs.windowHeight;
 
-        
-
         }
+
+        this.time++;
+        if (this.time == this.startWindTime) {
+            this.wind = Math.floor(10 + Math.random * 21);
+        }
+
+        if (this.time == this.finishWindTime) {
+            this.time = 0;
+            this.wind = 2; //to initial speed 
+
+            this.startWindTime = Math.floor(1000 + Math.random() * 10000);
+            this.finishWindTime = this.startWindTime + Math.floor(10 + Math.random() * 100);
+        } 
+
+
+
     }
 }
 
@@ -129,7 +149,7 @@ function createSnowfall() {
 
     const scenes = document.querySelectorAll('.snow');
 
-    for(let i = 0; scenes.length > i; i++) {
+    for (let i = 0; scenes.length > i; i++) {
 
         let cnvs = new Canvas(scenes[i]);
         let snowfall = new Snowflake(cnvs);
