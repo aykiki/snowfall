@@ -37,7 +37,8 @@ class Snowflake {
         this.snowflakes = [];
         this.image = new Image();
 
-        this.wind = 0; // changing direction and speed
+        this.startWind = 0; // changing direction and speed
+        this.finishWind = 0;
         this.time = 0;
         this.startWindTime = Math.floor(100000 + Math.random() * 1000000);
         this.finishWindTime = this.startWindTime + Math.floor(100000 + Math.random() * 1000000);
@@ -77,7 +78,7 @@ class Snowflake {
 
             // init vars which related with others features for every snowflake
             this.snowflakes[i].speedX = (100 - (this.snowflakes[i].size - 1)) * 0.001;
-            this.snowflakes[i].speedY = 1 + (100 - (this.snowflakes[i].size - 1)) * 0.01;
+            this.snowflakes[i].speedY = 1 + (100 - (this.snowflakes[i].size - 1)) * 0.001;
 
             this.snowflakes[i].eps = this.snowflakes[i].size * 1.5; //for smoothly falling and and disappearing snowflakes 
             this.snowflakes[i].cameraDist = (100 - (this.snowflakes[i].size - 1)) * 0.01; // from start of Z-axis to us [0, 100] -> [0, 1]
@@ -109,8 +110,8 @@ class Snowflake {
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y          
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth - this.snowflakes[i].direction * this.snowflakes[i].speedX + this.wind);
-            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY + this.wind / 2);
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth - this.snowflakes[i].speedX + this.startWind);
+            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + (this.snowflakes[i].speedY + this.startWind / 2));
 
             //return snowflakes on the start of the screen
             this.snowflakes[i].x %= (this.cnvs.windowWidth + this.snowflakes[i].eps);
@@ -124,13 +125,22 @@ class Snowflake {
             //do wind 
             this.time++;
             if (this.time == this.startWindTime) {
-                this.wind = 5 + Math.random();
+                this.finishWind= this.speedX + Math.random();
                 this.snowflakes[i].direction *= -1;
 
             }else if (this.time == this.finishWindTime){
                 this.wind = 0;
                 this.time = 0;
+                this.finishWind= 0;
+                this.startWind = 0;
+            }else if ((this.time > this.startWindTime) && (this.time < this.startWindTime + (this.finishWindTime - this.startWindTime) / 2)){
+                this.startWind += 0.0001;
+                this.time++;
+            }else if ((this.time > this.startWindTime + (this.finishWindTime - this.startWindTime) / 2) && (this.time < this.finishWindTime)){
+                this.startWind -= 0.0001;
+                this.time++;
             }
+            
 
         }
 
