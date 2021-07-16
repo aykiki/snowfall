@@ -98,7 +98,7 @@ class Snowflake {
         
         for (let i = 0; i < this.countSnow; i++) {
 
-            this.image.src = `../img/snowflake_${this.snowflakes[i].imgNumber}.png`;
+            this.image.src = `images/snowflake_${this.snowflakes[i].imgNumber}.png`;
 
             //draw images with sinusoidal motion in x and cosine motion in y
             this.cnvs.context.drawImage(this.image,
@@ -109,7 +109,7 @@ class Snowflake {
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y          
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX + this.wind);
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth - this.snowflakes[i].direction * this.snowflakes[i].speedX + this.wind);
             this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY + this.wind / 2);
 
             //return snowflakes on the start of the screen
@@ -121,17 +121,15 @@ class Snowflake {
             this.snowflakes[i].x /= this.cnvs.windowWidth;
             this.snowflakes[i].y /= this.cnvs.windowHeight;
 
+            //do wind 
             this.time++;
             if (this.time == this.startWindTime) {
                 this.wind = 5 + Math.random();
                 this.snowflakes[i].direction *= -1;
-                // console.log(this.time);
-                // console.log(this.startWindTime)
+
             }else if (this.time == this.finishWindTime){
                 this.wind = 0;
                 this.time = 0;
-                
-                // console.log(this.finishWindTime);
             }
 
         }
