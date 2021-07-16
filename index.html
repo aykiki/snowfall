@@ -60,7 +60,7 @@
                 this.time = 0;
                 this.startWindTime = Math.floor(100000 + Math.random() * 1000000);
                 this.finishWindTime = 10 * this.startWindTime + Math.floor(100000 + Math.random() * 1000000);
-                this.direction = -1;
+                this.direction = 1;
 
 
                 this.cnvs = cnvs;
@@ -169,7 +169,7 @@
                         this.time++;
                     }
 
-                    if (this.time == this.startWindTime + Math.random() * 1000) {
+                    if (this.time == this.startWindTime + this.finishWindTime + Math.random() * 100000) {
                         this.direction *= -1;
                         this.time++;
                     }
