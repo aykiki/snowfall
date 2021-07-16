@@ -104,8 +104,8 @@ class Snowflake {
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX + this.wind);
-            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY + this.wind);
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.snowflakes[i].speedX * this.wind);
+            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + this.snowflakes[i].speedY * this.wind);
 
             //return snowflakes on the start of the screen
             this.snowflakes[i].x %= (this.cnvs.windowWidth + this.snowflakes[i].eps);
@@ -121,7 +121,7 @@ class Snowflake {
     
 
         if(this.time == this.startWindTime) {
-            this.wind = Math.random() * 101;
+            this.wind = 1 * Math.random() * 11;
             this.time++;            
         } else if(this.time == this.finishWindTime) {
             this.startWindTime = Math.floor(100 + Math.random() * 1000);
