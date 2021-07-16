@@ -41,7 +41,7 @@ class Snowflake {
         this.finishWind = 0;
         this.time = 0;
         this.startWindTime = Math.floor(100000 + Math.random() * 1000000);
-        this.finishWindTime = this.startWindTime + Math.floor(100000 + Math.random() * 1000000);
+        this.finishWindTime = 10 * this.startWindTime + Math.floor(100000 + Math.random() * 1000000);
         
 
         this.cnvs = cnvs;
@@ -56,7 +56,7 @@ class Snowflake {
 
             this.snowflakes.push({
 
-                x: Math.random(),
+                x: Math.random() * 10,
                 y: Math.random(),
 
                 size: Math.floor(1 + Math.random() * 101),
@@ -134,10 +134,10 @@ class Snowflake {
                 this.finishWind= 0;
                 this.startWind = 0;
             }else if ((this.time > this.startWindTime) && (this.time < this.startWindTime + (this.finishWindTime - this.startWindTime) / 2)){
-                this.startWind += 0.0001;
+                this.startWind += 0.00001;
                 this.time++;
             }else if ((this.time > this.startWindTime + (this.finishWindTime - this.startWindTime) / 2) && (this.time < this.finishWindTime)){
-                this.startWind -= 0.0001;
+                this.startWind -= 0.00001;
                 this.time++;
             }
             
