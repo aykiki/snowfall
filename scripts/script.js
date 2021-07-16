@@ -42,6 +42,7 @@ class Snowflake {
         this.time = 0;
         this.startWindTime = Math.floor(100000 + Math.random() * 1000000);
         this.finishWindTime = 10 * this.startWindTime + Math.floor(100000 + Math.random() * 1000000);
+        this.direction = -1;
         
 
         this.cnvs = cnvs;
@@ -65,8 +66,6 @@ class Snowflake {
                 speedY: Math.random(),
 
                 imgNumber: Math.floor(0 + Math.random() * 11), //randomize images
-                
-                direction: -1,
 
                 //init below
                 c: 0, //amplituda
@@ -90,8 +89,6 @@ class Snowflake {
 
 
 
-
-
     drawSnowflakes() {
 
         window.requestAnimationFrame(this.drawSnowflakes.bind(this));
@@ -110,8 +107,11 @@ class Snowflake {
                 this.snowflakes[i].size, this.snowflakes[i].size);
 
             // changing x and y          
-            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth - this.snowflakes[i].speedX + this.startWind);
-            this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + (this.snowflakes[i].speedY + this.startWind / 2));
+            this.snowflakes[i].x = (this.snowflakes[i].x * this.cnvs.windowWidth + this.direction * (this.snowflakes[i].speedX + this.startWind)) < 0 ?
+                                    this.cnvs.windowWidth + this.snowflakes[i].eps + (this.snowflakes[i].x * this.cnvs.windowWidth + this.direction * 
+                                    (this.snowflakes[i].speedX + this.startWind)):(this.snowflakes[i].x * this.cnvs.windowWidth + this.direction * 
+                                    (this.snowflakes[i].speedX + this.startWind));
+                                    this.snowflakes[i].y = (this.snowflakes[i].y * this.cnvs.windowHeight + (this.snowflakes[i].speedY + this.startWind / 2));
 
             //return snowflakes on the start of the screen
             this.snowflakes[i].x %= (this.cnvs.windowWidth + this.snowflakes[i].eps);
@@ -141,14 +141,16 @@ class Snowflake {
                 this.time++;
             }
             
+            if(this.time == this.startWindTime + Math.random() * 1000){
+                this.direction *= -1;
+                this.time++;
+            }
 
         }
 
 
     }
 }
-
-
 
 
 function createSnowfall() {
